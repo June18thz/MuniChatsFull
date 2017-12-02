@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "633260498137",
+    "firebase_url": "https://munimuni-80fe1.firebaseio.com",
+    "project_id": "munimuni-80fe1",
+    "storage_bucket": "munimuni-80fe1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:633260498137:android:0926ab9259b1ce91",
+        "android_client_info": {
+          "package_name": "com.example.englandhoang.munimuni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "633260498137-1hmg2je1jkqod106at4pdt7509pmj9gt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.englandhoang.munimuni",
+            "certificate_hash": "90dc0b089c12cdab3cce952c19109cf5599a4ebb"
+          }
+        },
+        {
+          "client_id": "633260498137-rnl434olg14hhifntmv1n7dsc78id5a1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlQ4TNnWjNX-K6j4aQCICQrd7-fOoo_M4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "633260498137-rnl434olg14hhifntmv1n7dsc78id5a1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

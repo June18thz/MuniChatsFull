@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">MuniMuni</string>
+    <string name="register">Đăng ký mới</string>
+    <string name="name">Họ tên</string>
+    <string name="email">Email</string>
+    <string name="password">Mật khẩu</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="account_settings">Cài đặt tài khoản</string>
+    <string name="all_users">Mọi người</string>
+    <string name="login">Đăng nhập</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="default_status">Dòng trạng thái hiển thị ở đây</string>
+    <string name="update_avatar">Cập nhật ảnh đại diện</string>
+    <string name="update_status">Cập nhật trạng thái</string>
+    <string name="default_display_name">Tên hiển thị</string>
+    <string name="status">Trạng thái</string>
+    <string name="add_friend">Gửi lời mời kết bạn</string>
+    <string name="total_friends">Tổng số bạn bè</string>
+    <string name="decline">Từ chối lời mời kết bạn</string>
+    <string name="online">Online</string>
+    <string name="message">Dòng chat</string>
+</resources>
