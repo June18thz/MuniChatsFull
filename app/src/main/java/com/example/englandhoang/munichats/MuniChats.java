@@ -1,4 +1,4 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 import android.app.Application;
 import android.content.Intent;

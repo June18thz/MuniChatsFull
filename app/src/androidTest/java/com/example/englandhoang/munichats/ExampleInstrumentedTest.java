@@ -1,4 +1,4 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

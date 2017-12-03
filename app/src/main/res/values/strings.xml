@@ -19,5 +19,7 @@
     <string name="name">Họ tên</string>
     <string name="email">Email</string>
     <string name="password">Mật khẩu</string>
+    <string name="update">Cập nhật</string>
     <string name="no_account">Chưa có tài khoản?</string>
+    <string name="facebook_app_id">163436314262104</string>
 </resources>

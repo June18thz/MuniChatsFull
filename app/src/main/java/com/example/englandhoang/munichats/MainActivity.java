@@ -1,4 +1,4 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -6,11 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
+import com.facebook.login.LoginManager;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -79,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.faboptions_logout:
+                        LoginManager.getInstance().logOut();
                         FirebaseAuth.getInstance().signOut();
                         mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
                         sendToStart();
@@ -111,9 +110,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-
+    protected void onDestroy() {
+        super.onDestroy();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
         if (currentUser != null) {
@@ -121,7 +119,6 @@ public class MainActivity extends AppCompatActivity {
             mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
 
         }
-
     }
 
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.englandhoang.munimuni.ProfileActivity">
+    android:background="@drawable/bg_gradient"
+    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.ProfileActivity">
 
     <ImageView
         android:id="@+id/profile_image"
@@ -21,6 +22,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/default_display_name"
+        android:textColor="@color/colorWhite"
         android:textSize="24dp" />
 
     <TextView
@@ -31,24 +33,37 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:text="@string/default_status"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhite"
         android:textSize="18dp" />
 
     <Button
-        android:id="@+id/profile_decline_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:id="@+id/profile_send_req_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:text="@string/decline" />
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/violet_border"
+        android:layout_above="@id/profile_decline_btn"
+        android:text="@string/add_friend"
+        android:textAllCaps="false"
+        android:textColor="#6D69DF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
-        android:id="@+id/profile_send_req_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/profile_decline_btn"
+        android:id="@+id/profile_decline_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/add_friend" />
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/violet_border"
+        android:text="@string/decline"
+        android:textAllCaps="false"
+        android:textColor="#6D69DF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/profile_totalFriends"
@@ -58,6 +73,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
         android:text="@string/total_friends"
+        android:textColor="@color/colorWhite"
         android:textSize="14dp" />
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -28,7 +28,6 @@ import com.squareup.picasso.Callback;
 import com.squareup.picasso.NetworkPolicy;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

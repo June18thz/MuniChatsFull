@@ -10,7 +10,8 @@
         android:layout_height="40dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
-        android:src="@drawable/default_avatar" />
+        android:src="@drawable/default_avatar"
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/custom_bar_name"

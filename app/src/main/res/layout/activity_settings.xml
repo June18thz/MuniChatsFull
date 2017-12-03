@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
-    tools:context="com.example.englandhoang.munimuni.SettingsActivity">
+    android:background="@drawable/bg_gradient"
+    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.SettingsActivity">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/settings_image"
@@ -40,20 +40,30 @@
 
     <Button
         android:id="@+id/settings_image_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/settings_status_btn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:text="@string/update_avatar" />
+        android:background="@drawable/violet_border"
+        android:layout_above="@id/settings_status_btn"
+        android:text="@string/update_avatar"
+        android:textAllCaps="false"
+        android:textColor="#6D69DF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/settings_status_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="@string/update_status" />
+        android:background="@drawable/violet_border"
+        android:text="@string/update_status"
+        android:textAllCaps="false"
+        android:textColor="#6D69DF"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

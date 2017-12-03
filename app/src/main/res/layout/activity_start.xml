@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context="com.example.englandhoang.munimuni.StartActivity">
+    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.StartActivity">
 
 
     <ImageView
@@ -31,7 +31,7 @@
         android:textSize="20dp"
         android:textStyle="bold" />
 
-    <Button
+    <!--<Button
         android:id="@+id/mFacebookBtn"
         android:layout_width="300dp"
         android:layout_height="50dp"
@@ -42,6 +42,21 @@
         android:text="@string/facebook"
         android:textAllCaps="false"
         android:textColor="#6D69DF"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:visibility="invisible"/>-->
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/mFacebookBtn"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="65dp"
+        android:background="@drawable/btn_grey"
+        android:text="@string/facebook"
+        android:textColor="#6D69DF"
+        android:textAllCaps="false"
         android:textSize="20dp"
         android:textStyle="bold" />
 

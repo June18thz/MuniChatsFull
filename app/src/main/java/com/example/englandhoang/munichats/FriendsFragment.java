@@ -1,7 +1,8 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -43,6 +44,8 @@ public class FriendsFragment extends Fragment {
 
     private View mMainView;
 
+    private ProgressDialog mFriendsProgress;
+
 
     public FriendsFragment() {
         // Required empty public constructor
@@ -75,6 +78,10 @@ public class FriendsFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
+
+        mFriendsProgress = new ProgressDialog(getContext());
+        mFriendsProgress.setCanceledOnTouchOutside(false);
+        mFriendsProgress.setTitle("Đợi tí!");
 
         FirebaseRecyclerAdapter<Friends, FriendsViewHolder> friendsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Friends, FriendsViewHolder>(
 
@@ -119,6 +126,9 @@ public class FriendsFragment extends Fragment {
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         if (i == 0) {
 
+                                            mFriendsProgress.setMessage("Đang tải trang cá nhân...");
+                                            mFriendsProgress.show();
+
                                             //Intent profile
                                             Intent profileIntent = new Intent(getContext(), ProfileActivity.class);
                                             profileIntent.putExtra("user_id", list_user_id);
@@ -126,6 +136,9 @@ public class FriendsFragment extends Fragment {
 
                                         }
                                         if (i == 1) {
+
+                                            mFriendsProgress.setMessage("Đang tải trang tin nhắn...");
+                                            mFriendsProgress.show();
 
                                             //Intent chat
                                             Intent chatIntent = new Intent(getContext(), ChatActivity.class);
@@ -136,6 +149,8 @@ public class FriendsFragment extends Fragment {
                                         }
                                     }
                                 });
+
+                                builder.show();
 
                             }
                         });
@@ -152,6 +167,12 @@ public class FriendsFragment extends Fragment {
         };
         mFriendsList.setAdapter(friendsRecyclerViewAdapter);
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mFriendsProgress.hide();
     }
 
     public static class FriendsViewHolder extends RecyclerView.ViewHolder {

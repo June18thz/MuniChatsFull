@@ -1,4 +1,4 @@
-package com.example.englandhoang.munimuni;
+package com.example.englandhoang.munichats;
 
 
 import android.content.Context;
@@ -25,8 +25,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-import java.lang.reflect.Type;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
@@ -48,6 +46,7 @@ public class ChatsFragment extends Fragment {
     private View mMainView;
 
 
+
     public ChatsFragment() {
         // Required empty public constructor
     }
@@ -57,15 +56,14 @@ public class ChatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        mMainView = inflater.inflate(R.layout.fragment_chats, container, false);
+        mMainView = inflater.inflate(R.layout.fragment_friends, container, false);
 
-        mConvList = (RecyclerView) mMainView.findViewById(R.id.conv_list);
+        mConvList = (RecyclerView) mMainView.findViewById(R.id.friends_list);
         mAuth = FirebaseAuth.getInstance();
 
         mCurrent_user_id = mAuth.getCurrentUser().getUid();
 
         mConvDatabase = FirebaseDatabase.getInstance().getReference().child("Chat").child(mCurrent_user_id);
-
         mConvDatabase.keepSynced(true);
         mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
         mMessageDatabase = FirebaseDatabase.getInstance().getReference().child("messages").child(mCurrent_user_id);
@@ -74,26 +72,22 @@ public class ChatsFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-
         mConvList.setHasFixedSize(true);
         mConvList.setLayoutManager(linearLayoutManager);
 
         return mMainView;
-
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        Query conversationQuery = mConvDatabase.orderByChild("timestamp");
+        FirebaseRecyclerAdapter<Conv, ConvViewHolder> friendsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Conv, ConvViewHolder>(
 
-        FirebaseRecyclerAdapter<Conv, ConvViewHolder> firebaseConvAdapter = new FirebaseRecyclerAdapter<Conv, ConvViewHolder>(
                 Conv.class,
                 R.layout.users_single_layout,
                 ConvViewHolder.class,
-                conversationQuery
-
+                mConvDatabase
         ) {
             @Override
             protected void populateViewHolder(final ConvViewHolder viewHolder, final Conv model, int position) {
@@ -142,36 +136,24 @@ public class ChatsFragment extends Fragment {
                         if (dataSnapshot.hasChild("online")) {
 
                             String userOnline = dataSnapshot.child("online").getValue().toString();
-                            viewHolder.setOnline(userOnline);
+                            viewHolder.setUserOnline(userOnline);
 
                         }
 
                         viewHolder.setName(userName);
-                        viewHolder.setImage(userThumb, getContext());
+                        viewHolder.setUserImage(userThumb, getContext());
 
                         viewHolder.mView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
 
-                                //Intent profile
-                                /*
-                                Intent profileIntent = new Intent(getContext(), ProfileActivity.class);
-                                profileIntent.putExtra("user_id", list_user_id);
-                                startActivity(profileIntent);
-                                */
-
-
-                                //Intent chat
                                 Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("user_id", list_user_id);
                                 chatIntent.putExtra("user_name", userName);
                                 startActivity(chatIntent);
 
-
                             }
                         });
-
-
 
                     }
 
@@ -181,15 +163,14 @@ public class ChatsFragment extends Fragment {
                     }
                 });
 
+
             }
         };
-
-        mConvList.setAdapter(firebaseConvAdapter);
+        mConvList.setAdapter(friendsRecyclerViewAdapter);
 
     }
 
-
-    private static class ConvViewHolder extends RecyclerView.ViewHolder {
+    public static class ConvViewHolder extends RecyclerView.ViewHolder {
 
         View mView;
 
@@ -199,12 +180,13 @@ public class ChatsFragment extends Fragment {
             mView = itemView;
         }
 
-        public void setMessage(String message, boolean isSeen) {
+
+        public void setMessage(String data, boolean seen) {
 
             TextView userStatusView = (TextView) mView.findViewById(R.id.user_single_status);
-            userStatusView.setText(message);
+            userStatusView.setText(data);
 
-            if (!isSeen) {
+            if (!seen) {
                 userStatusView.setTypeface(userStatusView.getTypeface(), Typeface.BOLD);
             } else {
                 userStatusView.setTypeface(userStatusView.getTypeface(), Typeface.NORMAL);
@@ -219,18 +201,18 @@ public class ChatsFragment extends Fragment {
 
         }
 
-        public void setImage(String thumb_image, Context context) {
+        public void setUserImage(String userThumb, Context context) {
 
             CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.user_single_image);
-            Picasso.with(context).load(thumb_image).placeholder(R.drawable.default_avatar).into(userImageView);
+            Picasso.with(context).load(userThumb).placeholder(R.drawable.default_avatar).into(userImageView);
 
         }
 
-        public void setOnline(String online_status) {
+        public void setUserOnline(String userOnline) {
 
             ImageView userOnlineView = (ImageView) mView.findViewById(R.id.user_single_online);
 
-            if (online_status.equals("true")) {
+            if(userOnline.equals("true")) {
 
                 userOnlineView.setVisibility(View.VISIBLE);
 
@@ -241,18 +223,5 @@ public class ChatsFragment extends Fragment {
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
