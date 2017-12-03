@@ -109,18 +109,16 @@ public class FriendsFragment extends Fragment {
                             public void onClick(View view) {
 
                                 //Intent profile
-                                /*
                                 Intent profileIntent = new Intent(getContext(), ProfileActivity.class);
                                 profileIntent.putExtra("user_id", list_user_id);
                                 startActivity(profileIntent);
-                                */
 
 
                                 //Intent chat
-                                Intent chatIntent = new Intent(getContext(), ChatActivity.class);
+                                /*Intent chatIntent = new Intent(getContext(), ChatActivity.class);
                                 chatIntent.putExtra("user_id", list_user_id);
                                 chatIntent.putExtra("user_name", userName);
-                                startActivity(chatIntent);
+                                startActivity(chatIntent);*/
 
 
 

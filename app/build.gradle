@@ -39,25 +39,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.5.0'
     compile 'com.firebaseui:firebase-ui-database:2.3.0'
     compile 'id.zelory:compressor:2.1.0'
+    compile 'com.github.joaquimley:faboptions:1.1.2'
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 apply plugin: 'com.google.gms.google-services'

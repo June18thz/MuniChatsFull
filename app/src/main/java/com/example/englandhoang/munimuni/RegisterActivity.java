@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,10 +27,8 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private TextInputLayout mDisplayName, mEmail, mPassword;
+    private EditText mDisplayName, mEmail, mPassword;
     private Button mCreateBtn;
-
-    private Toolbar mToolbar;
 
     //Firebase Database
     private DatabaseReference mDatabase;
@@ -45,29 +44,23 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        //Toolbar set
-        mToolbar = (Toolbar) findViewById(R.id.register_toolbar);
-        setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Trang đăng ký");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         mRegProgress = new ProgressDialog(this);
 
 
         //Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
-        mDisplayName = (TextInputLayout) findViewById(R.id.reg_display_name);
-        mEmail = (TextInputLayout) findViewById(R.id.reg_email);
-        mPassword = (TextInputLayout) findViewById(R.id.reg_password);
+        mDisplayName = (EditText) findViewById(R.id.reg_display_name);
+        mEmail = (EditText) findViewById(R.id.reg_email);
+        mPassword = (EditText) findViewById(R.id.reg_password);
         mCreateBtn = (Button) findViewById(R.id.reg_create_btn);
 
         mCreateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String display_name = mDisplayName.getEditText().getText().toString();
-                String email = mEmail.getEditText().getText().toString();
-                String password = mPassword.getEditText().getText().toString();
+                String display_name = mDisplayName.getText().toString();
+                String email = mEmail.getText().toString();
+                String password = mPassword.getText().toString();
 
                 if (!TextUtils.isEmpty(display_name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(password)) {
 
@@ -78,7 +71,6 @@ public class RegisterActivity extends AppCompatActivity {
                     register_user(display_name, email, password);
 
                 }
-
 
             }
         });

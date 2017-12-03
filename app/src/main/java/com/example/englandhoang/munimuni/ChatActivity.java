@@ -175,8 +175,8 @@ public class ChatActivity extends AppCompatActivity {
                     chatAddMap.put("timestamp", ServerValue.TIMESTAMP);
 
                     Map chatUserMap = new HashMap();
-                    chatAddMap.put("Chat/" + mCurrentUserId + "/" + mChatUser, chatAddMap);
-                    chatAddMap.put("Chat/" + mChatUser + "/" + mCurrentUserId, chatAddMap);
+                    chatUserMap.put("Chat/" + mCurrentUserId + "/" + mChatUser, chatAddMap);
+                    chatUserMap.put("Chat/" + mChatUser + "/" + mCurrentUserId, chatAddMap);
 
                     mRootRef.updateChildren(chatUserMap, new DatabaseReference.CompletionListener() {
                         @Override
@@ -188,7 +188,6 @@ public class ChatActivity extends AppCompatActivity {
                             }
                         }
                     });
-
 
                 }
 

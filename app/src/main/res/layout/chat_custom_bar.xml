@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/default_display_name"
+        android:textColor="@color/colorWhite"
         android:textSize="20dp" />
 
     <TextView
@@ -24,7 +25,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/custom_bar_name"
-        android:textSize="12dp"
-        android:text="@string/online" />
+        android:text="@string/online"
+        android:textColor="@color/colorWhite"
+        android:textSize="12dp" />
 
 </RelativeLayout>
