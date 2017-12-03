@@ -1,7 +1,9 @@
 package com.example.englandhoang.munimuni;
 
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -108,19 +110,32 @@ public class FriendsFragment extends Fragment {
                             @Override
                             public void onClick(View view) {
 
-                                //Intent profile
-                                Intent profileIntent = new Intent(getContext(), ProfileActivity.class);
-                                profileIntent.putExtra("user_id", list_user_id);
-                                startActivity(profileIntent);
+                                CharSequence options[] = new CharSequence[]{"Trang cá nhân", "Gửi tin nhắn"};
 
+                                final AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                                builder.setTitle("");
+                                builder.setItems(options, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        if (i == 0) {
 
-                                //Intent chat
-                                /*Intent chatIntent = new Intent(getContext(), ChatActivity.class);
-                                chatIntent.putExtra("user_id", list_user_id);
-                                chatIntent.putExtra("user_name", userName);
-                                startActivity(chatIntent);*/
+                                            //Intent profile
+                                            Intent profileIntent = new Intent(getContext(), ProfileActivity.class);
+                                            profileIntent.putExtra("user_id", list_user_id);
+                                            startActivity(profileIntent);
 
+                                        }
+                                        if (i == 1) {
 
+                                            //Intent chat
+                                            Intent chatIntent = new Intent(getContext(), ChatActivity.class);
+                                            chatIntent.putExtra("user_id", list_user_id);
+                                            chatIntent.putExtra("user_name", userName);
+                                            startActivity(chatIntent);
+
+                                        }
+                                    }
+                                });
 
                             }
                         });
