@@ -50,11 +50,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         /*Left side*/
         public CircleImageView profileImage;
         public ImageView messageImage;
-        public TextView messageText, messageName, messageTime, messageNameImage, messageTimeImage;
+        public TextView messageText, /*messageName,*/ messageTime, /*messageNameImage,*/ messageTimeImage;
 
         /*Right side*/
         public ImageView messageImageRight;
-        public TextView messageTextRight, messageNameRight, messageTimeRight, messageNameImageRight, messageTimeImageRight;
+        public TextView messageTextRight, /*messageNameRight,*/ messageTimeRight, /*messageNameImageRight,*/ messageTimeImageRight;
 
         public MessageViewHolder(View itemView) {
             super(itemView);
@@ -63,17 +63,17 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             profileImage = (CircleImageView) itemView.findViewById(R.id.message_profile_layout);
             messageText = (TextView) itemView.findViewById(R.id.message_text_layout);
             messageImage = (ImageView) itemView.findViewById(R.id.message_image_layout);
-            messageName = (TextView) itemView.findViewById(R.id.name_text_layout);
+            //messageName = (TextView) itemView.findViewById(R.id.name_text_layout);
             messageTime = (TextView) itemView.findViewById(R.id.time_text_layout);
-            messageNameImage = (TextView) itemView.findViewById(R.id.name_text_layout_image);
+            //messageNameImage = (TextView) itemView.findViewById(R.id.name_text_layout_image);
             messageTimeImage = (TextView) itemView.findViewById(R.id.time_text_layout_image);
 
             /*Right side*/
             messageTextRight = (TextView) itemView.findViewById(R.id.message_text_layout_right);
             messageImageRight = (ImageView) itemView.findViewById(R.id.message_image_layout_right);
-            messageNameRight = (TextView) itemView.findViewById(R.id.name_text_layout_right);
+            //messageNameRight = (TextView) itemView.findViewById(R.id.name_text_layout_right);
             messageTimeRight = (TextView) itemView.findViewById(R.id.time_text_layout_right);
-            messageNameImageRight = (TextView) itemView.findViewById(R.id.name_text_layout_image_right);
+            //messageNameImageRight = (TextView) itemView.findViewById(R.id.name_text_layout_image_right);
             messageTimeImageRight = (TextView) itemView.findViewById(R.id.time_text_layout_image_right);
 
 
@@ -101,11 +101,11 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 String name = dataSnapshot.child("name").getValue().toString();
                 String image = dataSnapshot.child("thumb_image").getValue().toString();
 
-                holder.messageName.setText(name);
-                holder.messageNameImage.setText(name);
+                //holder.messageName.setText(name);
+                //holder.messageNameImage.setText(name);
 
-                holder.messageNameRight.setText(name);
-                holder.messageNameImageRight.setText(name);
+                //holder.messageNameRight.setText(name);
+                //holder.messageNameImageRight.setText(name);
 
                 Picasso.with(holder.profileImage.getContext()).load(image)
                         .placeholder(R.drawable.default_avatar).into(holder.profileImage);
@@ -122,16 +122,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.profileImage.setVisibility(View.GONE);
             holder.messageImage.setVisibility(View.GONE);
             holder.messageText.setVisibility(View.GONE);
-            holder.messageName.setVisibility(View.GONE);
+            //holder.messageName.setVisibility(View.GONE);
             holder.messageTime.setVisibility(View.GONE);
-            holder.messageNameImage.setVisibility(View.GONE);
+            //holder.messageNameImage.setVisibility(View.GONE);
             holder.messageTimeImage.setVisibility(View.GONE);
 
             holder.messageImageRight.setVisibility(View.VISIBLE);
             holder.messageTextRight.setVisibility(View.VISIBLE);
-            holder.messageNameRight.setVisibility(View.VISIBLE);
+            //holder.messageNameRight.setVisibility(View.VISIBLE);
             holder.messageTimeRight.setVisibility(View.VISIBLE);
-            holder.messageNameImageRight.setVisibility(View.VISIBLE);
+            //holder.messageNameImageRight.setVisibility(View.VISIBLE);
             holder.messageTimeImageRight.setVisibility(View.VISIBLE);
 
             if (message_type.equals("text")) {
@@ -139,9 +139,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.messageTextRight.setText(c.getMessage());
                 holder.messageImageRight.setVisibility(View.GONE);
                 holder.messageTextRight.setVisibility(View.VISIBLE);
-                holder.messageNameImageRight.setVisibility(View.INVISIBLE);
+                //holder.messageNameImageRight.setVisibility(View.INVISIBLE);
                 holder.messageTimeImageRight.setVisibility(View.INVISIBLE);
-                holder.messageNameRight.setVisibility(View.VISIBLE);
+                //holder.messageNameRight.setVisibility(View.VISIBLE);
                 holder.messageTimeRight.setVisibility(View.VISIBLE);
 
             } else {
@@ -150,9 +150,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.messageTextRight.setVisibility(View.GONE);
                 Picasso.with(holder.profileImage.getContext()).load(c.getMessage())
                         .placeholder(R.drawable.default_avatar).into(holder.messageImageRight);
-                holder.messageNameRight.setVisibility(View.INVISIBLE);
+                //holder.messageNameRight.setVisibility(View.INVISIBLE);
                 holder.messageTimeRight.setVisibility(View.INVISIBLE);
-                holder.messageNameImageRight.setVisibility(View.VISIBLE);
+                //holder.messageNameImageRight.setVisibility(View.VISIBLE);
                 holder.messageTimeImageRight.setVisibility(View.VISIBLE);
 
             }
@@ -181,16 +181,16 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             holder.profileImage.setVisibility(View.VISIBLE);
             holder.messageImage.setVisibility(View.VISIBLE);
             holder.messageText.setVisibility(View.VISIBLE);
-            holder.messageName.setVisibility(View.VISIBLE);
+            //holder.messageName.setVisibility(View.VISIBLE);
             holder.messageTime.setVisibility(View.VISIBLE);
-            holder.messageNameImage.setVisibility(View.VISIBLE);
+            //holder.messageNameImage.setVisibility(View.VISIBLE);
             holder.messageTimeImage.setVisibility(View.VISIBLE);
 
             holder.messageImageRight.setVisibility(View.GONE);
             holder.messageTextRight.setVisibility(View.GONE);
-            holder.messageNameRight.setVisibility(View.GONE);
+            //holder.messageNameRight.setVisibility(View.GONE);
             holder.messageTimeRight.setVisibility(View.GONE);
-            holder.messageNameImageRight.setVisibility(View.GONE);
+            //holder.messageNameImageRight.setVisibility(View.GONE);
             holder.messageTimeImageRight.setVisibility(View.GONE);
 
             if (message_type.equals("text")) {
@@ -198,9 +198,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.messageText.setText(c.getMessage());
                 holder.messageImage.setVisibility(View.GONE);
                 holder.messageText.setVisibility(View.VISIBLE);
-                holder.messageNameImage.setVisibility(View.INVISIBLE);
+                //holder.messageNameImage.setVisibility(View.INVISIBLE);
                 holder.messageTimeImage.setVisibility(View.INVISIBLE);
-                holder.messageName.setVisibility(View.VISIBLE);
+                //holder.messageName.setVisibility(View.VISIBLE);
                 holder.messageTime.setVisibility(View.VISIBLE);
 
             } else {
@@ -209,9 +209,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 holder.messageText.setVisibility(View.GONE);
                 Picasso.with(holder.profileImage.getContext()).load(c.getMessage())
                         .placeholder(R.drawable.default_avatar).into(holder.messageImage);
-                holder.messageName.setVisibility(View.INVISIBLE);
+                //holder.messageName.setVisibility(View.INVISIBLE);
                 holder.messageTime.setVisibility(View.INVISIBLE);
-                holder.messageNameImage.setVisibility(View.VISIBLE);
+                //holder.messageNameImage.setVisibility(View.VISIBLE);
                 holder.messageTimeImage.setVisibility(View.VISIBLE);
 
             }

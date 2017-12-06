@@ -34,7 +34,8 @@
             android:gravity="bottom"
             android:textSize="12dp"
             android:layout_below="@id/friend_single_image"
-            android:text="@string/default_display_name"/>
+            android:text="@string/default_display_name"
+            android:inputType="text"/>
     </RelativeLayout>
 
 </RelativeLayout>
