@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Toolbar mToolbar;
 
+
     private ViewPager mViewPager;
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
