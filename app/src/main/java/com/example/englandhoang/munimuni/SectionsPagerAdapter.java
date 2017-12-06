@@ -1,4 +1,4 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

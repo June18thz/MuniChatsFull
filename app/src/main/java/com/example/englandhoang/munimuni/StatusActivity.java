@@ -1,4 +1,4 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.app.ProgressDialog;
 import android.support.annotation.NonNull;

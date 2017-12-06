@@ -1,7 +1,6 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.app.Application;
-import android.content.Intent;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;

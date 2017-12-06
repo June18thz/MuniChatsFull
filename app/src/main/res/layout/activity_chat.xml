@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.ChatActivity">
+    tools:context="com.example.englandhoang.munimuni.ChatActivity">
 
     <include
         android:id="@+id/chat_app_bar"
@@ -15,18 +15,27 @@
 
     </include>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/friends_list"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/chat_app_bar">
+
+    </android.support.v7.widget.RecyclerView>
+
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/message_swipe_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/chat_app_bar">
+        android:layout_below="@+id/friends_list"
+        android:layout_above="@id/linearLayout">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/messages_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_below="@+id/recyclerView">
 
         </android.support.v7.widget.RecyclerView>
 

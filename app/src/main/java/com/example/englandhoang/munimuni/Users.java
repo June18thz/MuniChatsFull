@@ -1,4 +1,4 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 /**
  * Created by EnglandHoang on 11/30/2017.

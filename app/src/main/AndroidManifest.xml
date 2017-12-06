@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.englandhoang.munichats">
+    package="com.example.englandhoang.munimuni">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.example.englandhoang.munichats.MuniChats"
+        android:name=".MuniChats"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -17,37 +17,38 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-        <service android:name="com.example.englandhoang.munichats.FirebaseMessagingService">
+
+        <service android:name=".FirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.englandhoang.munichats.MainActivity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.englandhoang.munichats.StartActivity" />
+        <activity android:name=".StartActivity" />
         <activity
-            android:name="com.example.englandhoang.munichats.RegisterActivity"
-            android:parentActivityName="com.example.englandhoang.munichats.StartActivity" />
+            android:name=".RegisterActivity"
+            android:parentActivityName=".StartActivity" />
         <activity
-            android:name="com.example.englandhoang.munichats.LoginActivity"
-            android:parentActivityName="com.example.englandhoang.munichats.StartActivity" />
-        <activity android:name="com.example.englandhoang.munichats.SettingsActivity" />
+            android:name=".LoginActivity"
+            android:parentActivityName=".StartActivity" />
+        <activity android:name=".SettingsActivity" />
         <activity
-            android:name="com.example.englandhoang.munichats.StatusActivity"
-            android:parentActivityName="com.example.englandhoang.munichats.SettingsActivity" />
+            android:name=".StatusActivity"
+            android:parentActivityName=".SettingsActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity
-            android:name="com.example.englandhoang.munichats.UsersActivity"
-            android:parentActivityName="com.example.englandhoang.munichats.MainActivity" />
-        <activity android:name="com.example.englandhoang.munichats.ProfileActivity">
+            android:name=".UsersActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ProfileActivity">
             <intent-filter>
                 <action android:name="com.example.englandhoang.munimuni_TARGET_NOTIFICATION" />
 
@@ -55,8 +56,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.englandhoang.munichats.ChatActivity"
-            android:parentActivityName="com.example.englandhoang.munichats.MainActivity"></activity>
+            android:name=".ChatActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ChatAllActivity"></activity>
     </application>
 
 </manifest>

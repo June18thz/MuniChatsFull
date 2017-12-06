@@ -1,5 +1,7 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -61,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         fabOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                 switch (view.getId()) {
                     case R.id.faboptions_settings:
                         Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
@@ -73,14 +77,35 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.faboptions_maps:
-
+                        CharSequence options[] = new CharSequence[]{"Chức năng đang được thử nghiệm"};
+                        builder.setItems(options, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                return;
+                            }
+                        });
+                        builder.show();
                         break;
 
                     case R.id.faboptions_logout:
-                        LoginManager.getInstance().logOut();
-                        FirebaseAuth.getInstance().signOut();
-                        mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
-                        sendToStart();
+
+                        CharSequence options2[] = new CharSequence[]{"Có", "Không"};
+                        builder.setTitle("Bạn muốn đăng xuất?");
+                        builder.setItems(options2, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                if (i == 0) {
+                                    LoginManager.getInstance().logOut();
+                                    FirebaseAuth.getInstance().signOut();
+                                    mUserRef.child("online").setValue(ServerValue.TIMESTAMP);
+                                    sendToStart();
+                                }
+                                if (i == 1) {
+                                    return;
+                                }
+                            }
+                        });
+                        builder.show();
                         break;
 
                     default:

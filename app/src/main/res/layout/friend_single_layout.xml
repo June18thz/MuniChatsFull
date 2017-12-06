@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="80dp"
+    android:padding="5dp">
+
+    <RelativeLayout
+        android:layout_width="69dp"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/friend_single_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/default_avatar" />
+
+        <ImageView
+            android:id="@+id/friend_single_online"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginLeft="43dp"
+            android:padding="3dp"
+            android:visibility="invisible"
+            android:src="@drawable/online_icon" />
+
+        <TextView
+            android:id="@+id/friend_single_name"
+            android:layout_width="69dp"
+            android:layout_height="20dp"
+            android:textAlignment="center"
+            android:gravity="bottom"
+            android:textSize="12dp"
+            android:layout_below="@id/friend_single_image"
+            android:text="@string/default_display_name"/>
+    </RelativeLayout>
+
+</RelativeLayout>

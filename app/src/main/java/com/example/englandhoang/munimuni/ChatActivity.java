@@ -1,6 +1,8 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -17,8 +19,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -33,6 +37,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -76,6 +81,16 @@ public class ChatActivity extends AppCompatActivity {
 
     private String mLastKey = "";
     private String mPrevKey = "";
+
+
+    //Friend List
+    private RecyclerView mFriendsList;
+
+    private DatabaseReference mFriendsDatabase;
+    private DatabaseReference mUsersDatabase;
+
+    private String mCurrent_user_id;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +142,7 @@ public class ChatActivity extends AppCompatActivity {
 
         mImageStorage = FirebaseStorage.getInstance().getReference();
 
+        friendList();
         loadMessages();
 
         mTitleView.setText(userName);
@@ -460,4 +476,119 @@ public class ChatActivity extends AppCompatActivity {
 
 
     }
+
+    public void friendList() {
+
+
+        mFriendsList = (RecyclerView) findViewById(R.id.friends_list);
+
+
+        mCurrent_user_id = mAuth.getCurrentUser().getUid();
+
+        mFriendsDatabase = FirebaseDatabase.getInstance().getReference().child("Friends").child(mCurrent_user_id);
+        mFriendsDatabase.keepSynced(true);
+        mUsersDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mUsersDatabase.keepSynced(true);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        mFriendsList.setLayoutManager(layoutManager);
+
+        FirebaseRecyclerAdapter<Friends, FriendsViewHolder> friendsRecyclerViewAdapter = new FirebaseRecyclerAdapter<Friends, FriendsViewHolder>(
+
+                Friends.class,
+                R.layout.friend_single_layout,
+                FriendsViewHolder.class,
+                mFriendsDatabase
+        ) {
+            @Override
+            protected void populateViewHolder(final FriendsViewHolder viewHolder, Friends model, int position) {
+
+                final String list_user_id = getRef(position).getKey();
+
+                mUsersDatabase.child(list_user_id).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+
+                        final String userName = dataSnapshot.child("name").getValue().toString();
+                        String userThumb = dataSnapshot.child("thumb_image").getValue().toString();
+
+                        if (dataSnapshot.hasChild("online")) {
+
+                            String userOnline = dataSnapshot.child("online").getValue().toString();
+                            viewHolder.setOnline(userOnline);
+
+                        }
+
+                        viewHolder.setName(userName);
+                        viewHolder.setImage(userThumb, ChatActivity.this);
+
+                        viewHolder.mView.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                Intent chatIntent = new Intent(getApplicationContext(), ChatActivity.class);
+                                chatIntent.putExtra("user_id", list_user_id);
+                                chatIntent.putExtra("user_name", userName);
+                                finish();
+                                startActivity(chatIntent);
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+        };
+        mFriendsList.setAdapter(friendsRecyclerViewAdapter);
+
+    }
+
+    public static class FriendsViewHolder extends RecyclerView.ViewHolder {
+
+        View mView;
+
+        public FriendsViewHolder(View itemView) {
+            super(itemView);
+
+            mView = itemView;
+        }
+
+        public void setName(String name) {
+
+            TextView userNameView = (TextView) mView.findViewById(R.id.friend_single_name);
+            userNameView.setText(name);
+
+        }
+
+        public void setImage(String thumb_image, Context context) {
+            CircleImageView userImageView = (CircleImageView) mView.findViewById(R.id.friend_single_image);
+
+            Picasso.with(context).load(thumb_image).placeholder(R.drawable.default_avatar).into(userImageView);
+
+        }
+
+        public void setOnline(String online) {
+
+            ImageView userOnlineView = (ImageView) mView.findViewById(R.id.friend_single_online);
+
+            if (online.equals("true")) {
+
+                userOnlineView.setVisibility(View.VISIBLE);
+
+            } else {
+
+                userOnlineView.setVisibility(View.INVISIBLE);
+
+            }
+
+        }
+    }
+
+
 }

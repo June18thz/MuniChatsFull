@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.StatusActivity">
+    tools:context="com.example.englandhoang.munimuni.StatusActivity">
 
     <EditText
         android:id="@+id/status_input"

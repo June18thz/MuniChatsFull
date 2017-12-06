@@ -1,10 +1,13 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +32,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.Signature;
 import java.util.HashMap;
 
 public class StartActivity extends AppCompatActivity {
@@ -52,6 +58,22 @@ public class StartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_start);
         FacebookSdk.sdkInitialize(getApplicationContext());
         AppEventsLogger.activateApp(this);
+
+
+        /*try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.example.englandhoang.munimuni",
+                    PackageManager.GET_SIGNATURES);
+            for (android.content.pm.Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }*/
 
         mRegBtn = (TextView) findViewById(R.id.mRegBtn);
         mRegBtn.setOnClickListener(new View.OnClickListener() {

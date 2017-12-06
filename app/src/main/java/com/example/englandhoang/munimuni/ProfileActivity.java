@@ -1,4 +1,4 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -24,9 +24,11 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
 
-    private ImageView mProfileImage;
+    private CircleImageView mProfileImage;
     private TextView mProfileName, mProfileStatus, mProfileFriendCount;
     private Button mProfileSendReqBtn, mDeclineBtn;
 
@@ -59,7 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         mNotificationDatabase = FirebaseDatabase.getInstance().getReference().child("notifications");
         mCurrent_user = FirebaseAuth.getInstance().getCurrentUser();
 
-        mProfileImage = (ImageView) findViewById(R.id.profile_image);
+        mProfileImage = (CircleImageView) findViewById(R.id.profile_image);
         mProfileName = (TextView) findViewById(R.id.profile_displayName);
         mProfileStatus = (TextView) findViewById(R.id.profile_status);
         mProfileFriendCount = (TextView) findViewById(R.id.profile_totalFriends);

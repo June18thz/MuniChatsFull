@@ -5,22 +5,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_gradient"
-    tools:context="com.example.englandhoang.munichats.com.example.englandhoang.munichats.ProfileActivity">
+    tools:context="com.example.englandhoang.munimuni.ProfileActivity">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:scaleType="centerCrop"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_above="@id/profile_displayName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:src="@drawable/default_avatar" />
 
     <TextView
         android:id="@+id/profile_displayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/profile_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_centerVertical="true"
         android:text="@string/default_display_name"
         android:textColor="@color/colorWhite"
         android:textSize="24dp" />
@@ -41,10 +42,10 @@
         android:id="@+id/profile_send_req_btn"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_above="@id/profile_decline_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
         android:background="@drawable/violet_border"
-        android:layout_above="@id/profile_decline_btn"
         android:text="@string/add_friend"
         android:textAllCaps="false"
         android:textColor="#6D69DF"
@@ -74,6 +75,7 @@
         android:layout_marginBottom="20dp"
         android:text="@string/total_friends"
         android:textColor="@color/colorWhite"
-        android:textSize="14dp" />
+        android:textSize="14dp"
+        android:visibility="invisible" />
 
 </RelativeLayout>

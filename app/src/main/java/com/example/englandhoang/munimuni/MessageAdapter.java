@@ -1,4 +1,4 @@
-package com.example.englandhoang.munichats;
+package com.example.englandhoang.munimuni;
 
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
